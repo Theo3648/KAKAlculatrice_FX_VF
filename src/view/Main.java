@@ -73,33 +73,36 @@ public class Main extends Application {
         bvirg.setStyle("-fx-font-size: 16px");
         
         Button bplus = new Button("+");
-        bplus.setPrefWidth(50); 
+        bplus.setPrefWidth(80); 
         bplus.setPrefHeight(50);  
         bplus.setStyle("-fx-font-size: 16px");
         
         Button bmoins = new Button("-");
-        bmoins.setPrefWidth(50); 
+        bmoins.setPrefWidth(80); 
         bmoins.setPrefHeight(50);  
         bmoins.setStyle("-fx-font-size: 16px");
         
         Button bfois = new Button("*");
-        bfois.setPrefWidth(50); 
+        bfois.setPrefWidth(80); 
         bfois.setPrefHeight(50);  
         bfois.setStyle("-fx-font-size: 16px");
         
         Button bdiviser = new Button("/");
-        bdiviser.setPrefWidth(50); 
+        bdiviser.setPrefWidth(80); 
         bdiviser.setPrefHeight(50);  
         bdiviser.setStyle("-fx-font-size: 16px");
         
-        Button benter = new Button("h");
-        benter.setPrefWidth(50); 
+        Button benter = new Button("enter");
+        benter.setPrefWidth(80); 
         benter.setPrefHeight(50);  
-        benter.setStyle("-fx-font-size: 16px");
+        benter.setStyle("-fx-background-color: red; "+"-fx-border-color: darkblue; " +"-fx-font-size: 16px");
         
      // Créer un GridPane
         GridPane gridpane = new GridPane();
         gridpane.setAlignment(Pos.BOTTOM_LEFT);
+        gridpane.setStyle("-fx-background-color: lightblue;");
+        gridpane.setVgap(2);
+        gridpane.setHgap(2);
 
         // Ajouter des contraintes de colonnes pour créer de l'espace
         gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 0
@@ -107,8 +110,7 @@ public class Main extends Application {
         gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 2
         gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 3
         gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 4
-        gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 5 
-        gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 6
+        gridpane.getColumnConstraints().add(new ColumnConstraints(80)); // Colonne 5 
 
         // Positionner les boutons
         GridPane.setConstraints(b0, 2, 3); //Colonne 2 ligne 3
@@ -126,7 +128,7 @@ public class Main extends Application {
         GridPane.setConstraints(bmoins, 5, 2);
         GridPane.setConstraints(bfois, 5, 1);
         GridPane.setConstraints(bdiviser, 5, 0);
-        GridPane.setConstraints(benter, 6,0);
+        GridPane.setConstraints(benter, 5,4);
 
         // Ajouter tous les éléments à la grille
         gridpane.getChildren().addAll(b0,b1, b2, b3, b4, b5, b6, b7, b8, b9, bvirg, bplus, bmoins, bfois, bdiviser, benter);
