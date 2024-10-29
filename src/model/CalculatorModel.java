@@ -16,10 +16,10 @@ public class CalculatorModel implements CalculatorModelInterface{
 	
 	public void setAccu(String accu1) {
 		try {
-			Double.parseDouble(accu += accu1);
+			String test = accu + accu1;
+			Double.parseDouble(test);
 			accu += accu1;
 			calccontr.change(accu);
-			System.out.println(accu);
 	        } 
 		catch (NumberFormatException e) {
 	        }
@@ -38,7 +38,19 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 	
 	public void add() {
-		pile.add(pile.pop() + pile.pop());
+		if (pile.size() >= 2) {
+			pile.add(pile.pop() + pile.pop());
+			int size = pile.size();
+			List<Double> liste = new ArrayList<>();
+	        if (size < 4) {
+	            liste.addAll(pile);
+	        } else {
+	            for (int i = size - 4; i < size; i++) {
+	                liste.add(pile.get(i));
+	            }
+	        }
+			calccontr.change(liste);
+		}
 	}
 
 	public void substract() {
@@ -58,28 +70,68 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 
 	public void multiply() {
-		pile.add(pile.pop() * pile.pop());
+		if (pile.size() >= 2) {
+			pile.add(pile.pop() * pile.pop());
+			int size = pile.size();
+			List<Double> liste = new ArrayList<>();
+	        if (size < 4) {
+	            liste.addAll(pile);
+	        } else {
+	            for (int i = size - 4; i < size; i++) {
+	                liste.add(pile.get(i));
+	            }
+	        }
+			calccontr.change(liste);
+		}
 	}
 
 	public void divide() {
-		double p1 = pile.pop();
-		double p2 = pile.pop();
-		if (p2 != 0) {
-			pile.add(p1 / p2);
-		}
-		else {
-			pile.add(p2);
-			pile.add(p1);
+		if (pile.size() >= 2) {
+			double p1 = pile.pop();
+			double p2 = pile.pop();
+			if (p2 != 0) {
+				pile.add(p1 / p2);
+			}
+			else {
+				pile.add(p2);
+				pile.add(p1);
+			}
+			int size = pile.size();
+			List<Double> liste = new ArrayList<>();
+			if (size < 4) {
+				liste.addAll(pile);
+			} else {
+				for (int i = size - 4; i < size; i++) {
+					liste.add(pile.get(i));
+				}
+			}
+			calccontr.change(liste);
 		}
 	}
+		
 
 	public void opposite() {
-		pile.add(- pile.pop());
+		if (pile.size() >= 1) {
+			pile.add(- pile.pop());
+			int size = pile.size();
+			List<Double> liste = new ArrayList<>();
+			if (size < 4) {
+				liste.addAll(pile);
+			} else {
+				for (int i = size - 4; i < size; i++) {
+					liste.add(pile.get(i));
+				}
+			}
+			calccontr.change(liste);
+		}
 	}
 
 	public void push() {
-		pile.add(Double.parseDouble(accu));
-		this.clear();
+		if (!accu.isEmpty()) {
+			pile.add(Double.parseDouble(accu));
+			this.clear();
+			calccontr.change(accu);
+		}
 	}
 
 	public double pop() {
