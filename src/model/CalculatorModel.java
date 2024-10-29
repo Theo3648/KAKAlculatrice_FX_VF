@@ -17,6 +17,9 @@ public class CalculatorModel implements CalculatorModelInterface{
 	public void setAccu(String accu1) {
 		try {
 			Double.parseDouble(accu += accu1);
+			accu += accu1;
+			calccontr.change(accu);
+			System.out.println(accu);
 	        } 
 		catch (NumberFormatException e) {
 	        }

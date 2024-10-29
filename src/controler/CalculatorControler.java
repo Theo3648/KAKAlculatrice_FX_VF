@@ -16,6 +16,7 @@ public class CalculatorControler implements CalculatorControlerInterface{
 	}
 
 	public void change(String accucu) {
+		calcgui.change(calcmod.getAccu());
 	}
 
 	public void change(List<Double> stackData) {
