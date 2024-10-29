@@ -32,7 +32,6 @@ public class CalculatorControler implements CalculatorControlerInterface{
 
 	public void boutonPlusPressé() {
 		calcmod.add();
-		
 	}
 
 }
