@@ -84,6 +84,11 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         b9.setPrefHeight(50);  
         b9.setStyle("-fx-font-size: 16px");
         
+        Button bvirgule = new Button(",");
+        bvirgule.setPrefWidth(50); 
+        bvirgule.setPrefHeight(50);  
+        bvirgule.setStyle("-fx-font-size: 16px");
+        
         Button bplus = new Button("+");
         bplus.setPrefWidth(50); 
         bplus.setPrefHeight(50);  
@@ -150,6 +155,66 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         		calccontr.boutonChiffreAppuye(b0.getText());
         });
         
+        b1.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        		calccontr.boutonChiffreAppuye(b1.getText());
+        });
+        
+        b2.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        		calccontr.boutonChiffreAppuye(b2.getText());
+        });
+        
+        b3.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        		calccontr.boutonChiffreAppuye(b3.getText());
+        });
+        
+        b4.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        		calccontr.boutonChiffreAppuye(b4.getText());
+        });
+        
+        b5.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        		calccontr.boutonChiffreAppuye(b5.getText());
+        });
+        
+        b6.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        		calccontr.boutonChiffreAppuye(b6.getText());
+        });
+        
+        b7.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        		calccontr.boutonChiffreAppuye(b7.getText());
+        });
+        
+        b8.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        		calccontr.boutonChiffreAppuye(b8.getText());
+        });
+        
+        b9.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        		calccontr.boutonChiffreAppuye(b9.getText());
+        });
+        
+        bvirgule.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        		calccontr.boutonChiffreAppuye(bvirgule.getText());
+        });
+        
+        bmoins.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        			calccontr.boutonMoinsPressé();
+        		});
+        
+        bplus.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        			calccontr.boutonPlusPressé();
+        		});
+
         
        
     }

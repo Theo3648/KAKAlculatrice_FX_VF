@@ -12,6 +12,7 @@ public class CalculatorControler implements CalculatorControlerInterface{
 	public CalculatorControler(CalculatorGUI calcgui1) {
 		calcgui = calcgui1;
 		calcmod = new CalculatorModel();
+		calcmod.setCalccontr(this);
 	}
 
 	public void change(String accucu) {
@@ -22,6 +23,14 @@ public class CalculatorControler implements CalculatorControlerInterface{
 
 	public void boutonChiffreAppuye(String text) {
 		calcmod.setAccu(text);
+	}
+
+	public void boutonMoinsPressé() {
+		calcmod.substract();
+	}
+
+	public void boutonPlusPressé() {
+		calcmod.add();
 		
 	}
 
