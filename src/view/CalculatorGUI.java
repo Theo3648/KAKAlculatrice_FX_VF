@@ -252,8 +252,4 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
     public void start(Stage primaryStage) {
     	affiche();
     }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
 }
