@@ -6,13 +6,6 @@ import model.CalculatorModel;
 import view.CalculatorGUI;
 
 public class CalculatorControler implements CalculatorControlerInterface{
-	private CalculatorModel calcmod;
-	private CalculatorGUI calcgui;
-	
-	public CalculatorControler(CalculatorGUI calcgui1) {
-		calcgui = calcgui1;
-		calcmod = new CalculatorModel();
-	}
 
 	public void change(String accucu) {
 	}
@@ -22,7 +15,6 @@ public class CalculatorControler implements CalculatorControlerInterface{
 
 	public void boutonChiffreAppuye(String text) {
 		calcmod.setAccu(text);
-		
 	}
 
 }
