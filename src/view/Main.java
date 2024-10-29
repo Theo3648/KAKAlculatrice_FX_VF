@@ -17,6 +17,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+    	//changement
     	Button b0 = new Button("0");
         b0.setPrefWidth(50); 
         b0.setPrefHeight(50);  
@@ -105,7 +106,7 @@ public class Main extends Application {
         gridpane.setHgap(2);
 
         // Ajouter des contraintes de colonnes pour créer de l'espace
-        gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 0
+        gridpane.getColumnConstraints().add(new ColumnConstraints(20)); // Colonne 0
         gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 1
         gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 2
         gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 3
@@ -135,7 +136,7 @@ public class Main extends Application {
 
         
         // Créer la scène et afficher
-        Scene scene = new Scene(gridpane, 600, 600); // x horizontal y vertical
+        Scene scene = new Scene(gridpane, 320, 350); // x horizontal y vertical
         primaryStage.setScene(scene);
         primaryStage.setTitle("Calculatrice");
         primaryStage.show();
