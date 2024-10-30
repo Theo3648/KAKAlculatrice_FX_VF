@@ -218,6 +218,7 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         // Créer la scène et afficher
         Scene scene = new Scene(root, 320, 540); // x horizontal y vertical
         Stage stage = new Stage();
+        stage.setResizable(false); // permet de faire en sorte de ne plus agrandir la taille de la fenetre (evite d'avoir une interface degueu)
         stage.setScene(scene);
         stage.setTitle("Calculatrice");
         stage.show();
@@ -282,36 +283,42 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         
         bmoins.addEventHandler(ActionEvent.ACTION,
         		e -> {
-        			calccontr.boutonMoinsPressé();
+        			calccontr.boutonMoinsPresse();
         		});
         
         bplus.addEventHandler(ActionEvent.ACTION,
         		e -> {
-        			calccontr.boutonPlusPressé();
+        			calccontr.boutonPlusPresse();
         		}); 
         
         bfois.addEventHandler(ActionEvent.ACTION,
         		e -> {
-        			calccontr.boutonFoisPressé();
+        			calccontr.boutonFoisPresse();
         		});
         
         bdiviser.addEventHandler(ActionEvent.ACTION,
         		e -> {
-        			calccontr.boutonDiviserPressé();
+        			calccontr.boutonDiviserPresse();
         		});
         
         benter.addEventHandler(ActionEvent.ACTION,
         		e -> {
-        			calccontr.boutonEntréePressé();
+        			calccontr.boutonEntréePresse();
         		});
+        
         bclear.addEventHandler(ActionEvent.ACTION, //Anant 
         		e -> {
-        			calccontr.boutonClearPressé();
+        			calccontr.boutonClearPresse();
         		});
+        
         bclearall.addEventHandler(ActionEvent.ACTION, //Anant 
         		e -> {
-        			calccontr.boutonClearAllPressé();
-        			
+        			calccontr.boutonClearAllPresse();
+        		});
+        
+        bops.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        			calccontr.boutonOpsPresse();
         		});
     }
 
@@ -325,28 +332,41 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
 	// si je spam click le plus par ex, du coup les resultats du haut ne se mette pas a jour
 	public void change(List<Double> stackData) {
 		System.out.println(stackData); //au debut la pile est vide, ou non remplie entierement
-        int size = stackData.size(); //Me permet de connaitre son nombre d'elements
-        if (size<4) {										//Pour le debut, quand la pile nest pas encore remplie
-        	if (size==1) {
-    			displayLabel2.setText(Double.toString(stackData.get(0)));
-    		}
-    		if (size==2) {
-    			displayLabel2.setText(Double.toString(stackData.get(1)));
-    			displayLabel3.setText(Double.toString(stackData.get(0)));
-    		}
-    		if (size==3) {
-    			displayLabel2.setText(Double.toString(stackData.get(2)));
-    			displayLabel3.setText(Double.toString(stackData.get(1)));
-    			displayLabel4.setText(Double.toString(stackData.get(0)));
-    		}
+        int size = stackData.size(); //Me permet de connaitre son nombre d'elements	
+        if (size ==0) {
+        	displayLabel2.setText("0");
+    		displayLabel3.setText("0");
+    		displayLabel4.setText("0");
+    		displayLabel5.setText("0");
         }
-        else {
-        	displayLabel2.setText(Double.toString(stackData.get(size-1)));
-    		displayLabel3.setText(Double.toString(stackData.get(size-2)));
-    		displayLabel4.setText(Double.toString(stackData.get(size-3)));
-    		displayLabel5.setText(Double.toString(stackData.get(size-4)));
+        if (size==1) {
+    		displayLabel2.setText(Double.toString(stackData.get(0)));
+    		displayLabel3.setText("0");
+    		displayLabel4.setText("0");
+    		displayLabel5.setText("0");
+    	}
+    	if (size==2) {
+    		displayLabel2.setText(Double.toString(stackData.get(1)));
+    		displayLabel3.setText(Double.toString(stackData.get(0)));
+    		displayLabel4.setText("0");
+    		displayLabel5.setText("0");
+    	}
+    	if (size==3) {
+    		displayLabel2.setText(Double.toString(stackData.get(2)));
+    		displayLabel3.setText(Double.toString(stackData.get(1)));
+    		displayLabel4.setText(Double.toString(stackData.get(0)));
+    		displayLabel5.setText("0");
+   		}
+        if (size==4) {
+        	displayLabel2.setText(Double.toString(stackData.get(3)));
+    		displayLabel3.setText(Double.toString(stackData.get(2)));
+    		displayLabel4.setText(Double.toString(stackData.get(1)));
+    		displayLabel5.setText(Double.toString(stackData.get(0)));
         	}
         }
+
+
+
     
     public void start(Stage primaryStage) {
     	affiche();

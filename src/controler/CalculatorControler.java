@@ -31,32 +31,37 @@ public class CalculatorControler implements CalculatorControlerInterface{
 		calcmod.setAccu(text);
 	}
 
-	public void boutonMoinsPressé() {
+	public void boutonMoinsPresse() {
 		calcmod.substract();
 	}
 
-	public void boutonPlusPressé() {
+	public void boutonPlusPresse() {
 		calcmod.add();
 	}
 
-	public void boutonFoisPressé() {
+	public void boutonFoisPresse() {
 		calcmod.multiply();
 	}
 
-	public void boutonDiviserPressé() {
+	public void boutonDiviserPresse() {
 		calcmod.divide();
 	}
 
-	public void boutonEntréePressé() {
+	public void boutonEntréePresse() {
 		calcmod.push();	
 	}
 	
-	public void boutonClearPressé() { //Anant
+	public void boutonClearPresse() { //Anant
 		calcmod.clear();	
 	}
 	
-	public void boutonClearAllPressé() { //Anant
+	public void boutonClearAllPresse() { //Anant
 		calcmod.clearAll();	
+	}
+
+	public void boutonOpsPresse() {
+		calcmod.opposite();
+		
 	}
 
 

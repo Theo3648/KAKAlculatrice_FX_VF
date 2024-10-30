@@ -111,8 +111,23 @@ public class CalculatorModel implements CalculatorModelInterface{
 		
 
 	public void opposite() {
-		if (pile.size() >= 1) {
-			pile.add(- pile.pop());
+		if (!accu.isEmpty()) {
+			if (accu.charAt(0) == '-') {
+				accu = accu.substring(1);
+				calccontr.change(accu);
+			}
+			else {
+				accu = '-' + accu;
+				calccontr.change(accu);
+			}
+		}
+	}
+
+	public void push() {
+		if (!accu.isEmpty()) {
+			pile.add(Double.parseDouble(accu));
+			this.clear();
+			calccontr.change(accu);
 			int size = pile.size();
 			List<Double> liste = new ArrayList<>();
 			if (size < 4) {
@@ -123,14 +138,6 @@ public class CalculatorModel implements CalculatorModelInterface{
 				}
 			}
 			calccontr.change(liste);
-		}
-	}
-
-	public void push() {
-		if (!accu.isEmpty()) {
-			pile.add(Double.parseDouble(accu));
-			this.clear();
-			calccontr.change(accu);
 		}
 	}
 
@@ -157,7 +164,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	}
 
 	public void clearAll() {
-		while(pile.equals(new Stack<Double>())) {
+		while(!pile.equals(new Stack<Double>())) {
 			pile.pop();
 		}
 		calccontr.change(new ArrayList<Double>());
