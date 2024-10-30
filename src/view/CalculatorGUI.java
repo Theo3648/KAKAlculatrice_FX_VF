@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.event.ActionEvent;
@@ -20,8 +21,48 @@ import controler.CalculatorControler;
 public class CalculatorGUI extends Application implements CalculatorGUIInterface{
 	
 	private CalculatorControler calccontr;
+	private Label displayLabel1;
+	private Label displayLabel2;
+	private Label displayLabel3;
+	private Label displayLabel4;
+	private Label displayLabel5;
+//	private Array
 
 	public void affiche() {
+		
+		displayLabel1 = new Label("0");
+        displayLabel1.setPrefHeight(50);
+        displayLabel1.setMaxWidth(Double.MAX_VALUE);
+        displayLabel1.setAlignment(Pos.TOP_RIGHT);
+        displayLabel1.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
+        
+        displayLabel2 = new Label("0");
+        displayLabel2.setPrefHeight(50);
+        displayLabel2.setMaxWidth(Double.MAX_VALUE);
+        displayLabel2.setAlignment(Pos.TOP_RIGHT);
+        displayLabel2.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
+        
+        displayLabel3 = new Label("0");
+        displayLabel3.setPrefHeight(50);
+        displayLabel3.setMaxWidth(Double.MAX_VALUE);
+        displayLabel3.setAlignment(Pos.TOP_RIGHT);
+        displayLabel3.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
+        
+        displayLabel4 = new Label("0");
+        displayLabel4.setPrefHeight(50);
+        displayLabel4.setMaxWidth(Double.MAX_VALUE);
+        displayLabel4.setAlignment(Pos.TOP_RIGHT);
+        displayLabel4.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
+        
+        displayLabel5 = new Label("0");
+        displayLabel5.setPrefHeight(50);
+        displayLabel5.setMaxWidth(Double.MAX_VALUE);
+        displayLabel5.setAlignment(Pos.TOP_RIGHT);
+        displayLabel5.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
+		
+		
+		////
+		
 		calccontr = new CalculatorControler(this);
 		
 		Button b0 = new Button("0");
@@ -80,41 +121,51 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         bvirg.setStyle("-fx-font-size: 16px");
         
         Button bplus = new Button("+");
-        bplus.setPrefWidth(50); 
+        bplus.setPrefWidth(80); 
         bplus.setPrefHeight(50);  
         bplus.setStyle("-fx-font-size: 16px");
         
         Button bmoins = new Button("-");
-        bmoins.setPrefWidth(50); 
+        bmoins.setPrefWidth(80); 
         bmoins.setPrefHeight(50);  
         bmoins.setStyle("-fx-font-size: 16px");
-
+        
         Button bfois = new Button("*");
-        bfois.setPrefWidth(50); 
+        bfois.setPrefWidth(80); 
         bfois.setPrefHeight(50);  
         bfois.setStyle("-fx-font-size: 16px");
-
+        
         Button bdiviser = new Button("/");
-        bdiviser.setPrefWidth(50); 
+        bdiviser.setPrefWidth(80); 
         bdiviser.setPrefHeight(50);  
         bdiviser.setStyle("-fx-font-size: 16px");
 
         Button benter = new Button("<>");
-        benter.setPrefWidth(50); 
+        benter.setPrefWidth(80); 
         benter.setPrefHeight(50);  
-        benter.setStyle("-fx-font-size: 16px");
+        benter.setStyle("-fx-background-color: lightgreen; -fx-border-color: darkblue; -fx-font-size: 16px");
         
         Button bops = new Button("+/-");
-        bops.setPrefWidth(50); 
+        bops.setPrefWidth(80); 
         bops.setPrefHeight(50);  
         bops.setStyle("-fx-font-size: 16px");
         
-        Rectangle rectBlanc = new Rectangle(50, 40); // Esthetisme
-        rectBlanc.setFill(Color.GRAY);
+        Button bclear = new Button("C");
+        bclear.setPrefWidth(50); 
+        bclear.setPrefHeight(50);  
+        bclear.setStyle("-fx-background-color: red;-fx-font-size: 16px");
+        
+        Button bclearall = new Button("CA");
+        bclearall.setPrefWidth(50); 
+        bclearall.setPrefHeight(50);  
+        bclearall.setStyle("-fx-background-color: red;-fx-font-size: 16px");
         
         // Créer un GridPane
         GridPane gridpane = new GridPane();
         gridpane.setAlignment(Pos.BOTTOM_LEFT);
+        gridpane.setStyle("-fx-background-color: lightblue;");
+        gridpane.setVgap(2);
+        gridpane.setHgap(2);
 
         // Ajouter des contraintes de colonnes pour créer de l'espace
         gridpane.getColumnConstraints().add(new ColumnConstraints(20)); // Colonne 0
@@ -122,11 +173,10 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 2
         gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 3
         gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 4
-        gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 5 
-        gridpane.getColumnConstraints().add(new ColumnConstraints(50)); // Colonne 6
+        gridpane.getColumnConstraints().add(new ColumnConstraints(80)); // Colonne 5 
 
         // Positionner les boutons
-        GridPane.setConstraints(b0, 1, 3); //Colonne 1 ligne 3
+        GridPane.setConstraints(b0, 2, 3); //Colonne 2 ligne 3
         GridPane.setConstraints(b1, 1, 0);
         GridPane.setConstraints(b2, 2, 0);
         GridPane.setConstraints(b3, 3, 0);
@@ -136,21 +186,37 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         GridPane.setConstraints(b7, 1, 2);
         GridPane.setConstraints(b8, 2, 2);
         GridPane.setConstraints(b9, 3, 2);
-        GridPane.setConstraints(bvirg, 2, 3);
-        GridPane.setConstraints(bops, 3, 3);
+        GridPane.setConstraints(bvirg, 1, 3);
         GridPane.setConstraints(bplus, 5, 3); // Colonne 5, rangée 3
         GridPane.setConstraints(bmoins, 5, 2);
         GridPane.setConstraints(bfois, 5, 1);
         GridPane.setConstraints(bdiviser, 5, 0);
-        GridPane.setConstraints(benter, 6,0);
+        GridPane.setConstraints(benter, 5,4);
+        GridPane.setConstraints(bops, 3, 3);
+        GridPane.setConstraints(bclear, 1, 4);
+        GridPane.setConstraints(bclearall, 3, 4);
 
         // Ajouter tous les éléments à la grille
-        gridpane.getChildren().addAll(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, bvirg, bops, bplus, bmoins, bfois, bdiviser, benter);
-
-        //l'ancien code est sur le bloc note, celui bien mais chiffre collé au bord
+        gridpane.getChildren().addAll(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, bvirg, bops, bplus, bmoins, bfois, bdiviser, benter, bclear, bclearall);
+        
+     // Ajouter des événements pour les boutons de chiffres
+//        b0.setOnAction(e -> updateDisplay("0"));
+//        b1.setOnAction(e -> updateDisplay("1"));
+//        b2.setOnAction(e -> updateDisplay("2"));
+//        b3.setOnAction(e -> updateDisplay("3"));
+//        b4.setOnAction(e -> updateDisplay("4"));
+//        b5.setOnAction(e -> updateDisplay("5"));
+//        b6.setOnAction(e -> updateDisplay("6"));
+//        b7.setOnAction(e -> updateDisplay("7"));
+//        b8.setOnAction(e -> updateDisplay("8"));
+//        b9.setOnAction(e -> updateDisplay("9"));
+//        bops.setOnAction(e -> updateDisplay("-"));
+        
+        //Concatener les deux
+        VBox root = new VBox(displayLabel5, displayLabel4, displayLabel3, displayLabel2, displayLabel1, gridpane);
         
         // Créer la scène et afficher
-        Scene scene = new Scene(gridpane, 320, 400); // x horizontal y vertical
+        Scene scene = new Scene(root, 320, 540); // x horizontal y vertical
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Calculatrice");
@@ -238,17 +304,55 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         		e -> {
         			calccontr.boutonEntréePressé();
         		});
-       
+        bclear.addEventHandler(ActionEvent.ACTION, //Anant 
+        		e -> {
+        			calccontr.boutonClearPressé();
+        		});
+        bclearall.addEventHandler(ActionEvent.ACTION, //Anant 
+        		e -> {
+        			calccontr.boutonClearAllPressé();
+        			
+        		});
     }
 
 	public void change(String accu) {
 		System.out.println(accu);
+        if(accu.equals("-")){
+        	displayLabel1.setText(accu+displayLabel1.getText()); //Transforme en nombre negatif, je suis chaud de rajouter un truc dans  les events handlers
+        }
+        else {
+            displayLabel1.setText(accu);
+        }
+		
 	}
+	//bizarre que tai acces à la pile alors quelle est en prive en plus tas le stackdata qui sert a rien du coup
 
+	// si je spam click le plus par ex, du coup les resultats du haut ne se mette pas a jour
 	public void change(List<Double> stackData) {
-		System.out.println(calccontr.getCalcMod().getPile());
-	}
-	
+		System.out.println(stackData); //au debut la pile est vide, ou non remplie entierement
+        int size = stackData.size(); //Me permet de connaitre son nombre d'elements
+        if (size<4) {										//Pour le debut, quand la pile nest pas encore remplie
+        	if (size==1) {
+    			displayLabel2.setText(Double.toString(stackData.get(0)));
+    		}
+    		if (size==2) {
+    			displayLabel2.setText(Double.toString(stackData.get(1)));
+    			displayLabel3.setText(Double.toString(stackData.get(0)));
+    		}
+    		if (size==3) {
+    			displayLabel2.setText(Double.toString(stackData.get(2)));
+    			displayLabel3.setText(Double.toString(stackData.get(1)));
+    			displayLabel4.setText(Double.toString(stackData.get(0)));
+    		}
+        }
+        else {
+        	displayLabel2.setText(Double.toString(stackData.get(size-1)));
+    		displayLabel3.setText(Double.toString(stackData.get(size-2)));
+    		displayLabel4.setText(Double.toString(stackData.get(size-3)));
+    		displayLabel5.setText(Double.toString(stackData.get(size-4)));
+        	}
+        }
+    
     public void start(Stage primaryStage) {
     	affiche();
     }

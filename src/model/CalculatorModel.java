@@ -20,7 +20,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 			Double.parseDouble(test);
 			accu += accu1;
 			calccontr.change(accu);
-	        } 
+	        }
 		catch (NumberFormatException e) {
 	        }
 		}
@@ -153,11 +153,13 @@ public class CalculatorModel implements CalculatorModelInterface{
 	
 	public void clear() {
 		accu = "";
+		calccontr.change("");
 	}
 
 	public void clearAll() {
 		while(pile.equals(new Stack<Double>())) {
 			pile.pop();
 		}
+		calccontr.change(new ArrayList<Double>());
 	}
 }

@@ -19,8 +19,8 @@ public class CalculatorControler implements CalculatorControlerInterface{
 		calcmod.setCalccontr(this);
 	}
 
-	public void change(String accucu) {
-		calcgui.change(calcmod.getAccu());
+	public void change(String accu) {
+		calcgui.change(accu);
 	}
 
 	public void change(List<Double> stackData) {
@@ -49,6 +49,14 @@ public class CalculatorControler implements CalculatorControlerInterface{
 
 	public void boutonEntréePressé() {
 		calcmod.push();	
+	}
+	
+	public void boutonClearPressé() { //Anant
+		calcmod.clear();	
+	}
+	
+	public void boutonClearAllPressé() { //Anant
+		calcmod.clearAll();	
 	}
 
 
