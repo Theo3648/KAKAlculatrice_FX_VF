@@ -317,14 +317,9 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
 
 	public void change(String accu) {
 		System.out.println(accu);
-        if(accu.equals("-")){
-        	displayLabel1.setText(accu+displayLabel1.getText()); //Transforme en nombre negatif, je suis chaud de rajouter un truc dans  les events handlers
-        }
-        else {
-            displayLabel1.setText(accu);
+        displayLabel1.setText(accu);
         }
 		
-	}
 	//bizarre que tai acces à la pile alors quelle est en prive en plus tas le stackdata qui sert a rien du coup
 
 	// si je spam click le plus par ex, du coup les resultats du haut ne se mette pas a jour
