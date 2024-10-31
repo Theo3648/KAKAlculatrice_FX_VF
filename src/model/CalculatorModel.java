@@ -58,11 +58,11 @@ public class CalculatorModel implements CalculatorModelInterface{
 	 */
 	public List<Double> creationListe4Derniers() {
 		int size = pile.size();
-		List<Double> liste = new ArrayList<>();
-        if (size < 4) {
+		List<Double> liste = new ArrayList<>(); //liste qui va contenir les au plus 4 premiers elements de la pile
+        if (size < 4) { 
             liste.addAll(pile);
         } else {
-            for (int i = size - 4; i < size; i++) {
+            for (int i = size - 4; i < size; i++) { //on ne veut que les 4 premiers elements de la pile
                 liste.add(pile.get(i));
             }
         }
