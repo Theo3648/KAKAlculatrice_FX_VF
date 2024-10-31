@@ -53,6 +53,22 @@ public class CalculatorModel implements CalculatorModelInterface{
 		pile = pile1;
 	}
 	/**
+	 * Permet de retourner la listes des 4 premiers elements de la pile
+	 * @return liste des 4 premiers elements de la pile
+	 */
+	public List<Double> creationListe4Derniers() {
+		int size = pile.size();
+		List<Double> liste = new ArrayList<>();
+        if (size < 4) {
+            liste.addAll(pile);
+        } else {
+            for (int i = size - 4; i < size; i++) {
+                liste.add(pile.get(i));
+            }
+        }
+        return liste;
+	}
+	/**
 	 * 
 	 * Permet de choisir le controler voulu
 	 */
@@ -64,34 +80,20 @@ public class CalculatorModel implements CalculatorModelInterface{
 	  */
 	public void add() {
 		if (pile.size() >= 2) { //si la pile ne contient qu'un element, on ne peut pas sommer
-			pile.add(pile.pop() + pile.pop()); //on sommme les deux premiers elements de la pile 
-			int size = pile.size();
-			List<Double> liste = new ArrayList<>(); //liste qui va contenir les au plus 4 premiers elements de la pile
-	        if (size < 4) {
-	            liste.addAll(pile);
-	        } else {
-	            for (int i = size - 4; i < size; i++) { //on ne veut que les 4 premiers elements de la pile
-	                liste.add(pile.get(i));
-	            }
-	        }
-			calccontr.change(liste); 
+			pile.add(pile.pop() + pile.pop());//on sommme les deux premiers elements de la pile 
+			List<Double> liste = this.creationListe4Derniers();
+			calccontr.change(liste);
 		}
 	}
+
+
 	/**
 	 * Methode qui permet de soustraire les deux premiers elements de la pile
 	 */
 	public void substract() {
-		if (pile.size() >= 2) { // si la pile ne contient qu'un element on ne peut pas soustraire
-			pile.add(pile.pop() - pile.pop()); //soustrait les 2 premiers elements de la pile 
-			int size = pile.size();
-			List<Double> liste = new ArrayList<>(); //liste qui va contenir les au plus 4 premiers elements de la pile
-	        if (size < 4) {
-	            liste.addAll(pile);
-	        } else {
-	            for (int i = size - 4; i < size; i++) { //on ne veut que les 4 premiers elements de la pile
-	                liste.add(pile.get(i));
-	            }
-	        }
+		if (pile.size() >= 2) {// si la pile ne contient qu'un element on ne peut pas soustraire
+			pile.add(pile.pop() - pile.pop()); //soustrait les 2 premiers elements de la pile
+			List<Double> liste = this.creationListe4Derniers();
 			calccontr.change(liste);
 		}
 	}
@@ -100,16 +102,8 @@ public class CalculatorModel implements CalculatorModelInterface{
 	 */
 	public void multiply() {
 		if (pile.size() >= 2) { // si la pile ne contient qu'un element on ne peut pas multiplier
-			pile.add(pile.pop() * pile.pop()); //multiplie les 2 premiers elements de la pile 
-			int size = pile.size();
-			List<Double> liste = new ArrayList<>(); //liste qui va contenir les au plus 4 premiers elements de la pile
-	        if (size < 4) {
-	            liste.addAll(pile);
-	        } else {
-	            for (int i = size - 4; i < size; i++) { //on ne veut que les 4 premiers elements de la pile
-	                liste.add(pile.get(i));
-	            }
-	        }
+			pile.add(pile.pop() * pile.pop()); //multiplie les 2 premiers elements de la pile
+			List<Double> liste = this.creationListe4Derniers();
 			calccontr.change(liste);
 		}
 	}
@@ -127,15 +121,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 				pile.add(p2); 
 				pile.add(p1);
 			}
-			int size = pile.size();
-			List<Double> liste = new ArrayList<>(); //liste qui va contenir les au plus 4 premiers elements de la pile
-			if (size < 4) {
-				liste.addAll(pile);
-			} else {
-				for (int i = size - 4; i < size; i++) { //on ne veut que les 4 premiers elements de la pile
-					liste.add(pile.get(i));
-				}
-			}
+			List<Double> liste = this.creationListe4Derniers();
 			calccontr.change(liste);
 		}
 	}
@@ -163,15 +149,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 			pile.add(Double.parseDouble(accu));
 			this.clear();      //vide l'accumulateur et le remet a 0 
 			calccontr.change(accu);
-			int size = pile.size();
-			List<Double> liste = new ArrayList<>(); //liste qui va contenir les au plus 4 premiers elements de la pile
-			if (size < 4) {
-				liste.addAll(pile);
-			} else {
-				for (int i = size - 4; i < size; i++) {
-					liste.add(pile.get(i));
-				}
-			}
+			List<Double> liste = this.creationListe4Derniers();
 			calccontr.change(liste);
 		}
 	}
