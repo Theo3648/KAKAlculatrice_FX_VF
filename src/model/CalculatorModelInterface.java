@@ -1,5 +1,7 @@
 package model;
-
+/**
+ * Interface qui va obliger CalculatorModel a au moins avoir ces methodes
+ */
 public interface CalculatorModelInterface {
 
 	public void add();

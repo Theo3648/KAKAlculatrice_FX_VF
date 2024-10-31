@@ -9,3 +9,4 @@ public class main {
 		Application.launch(CalculatorGUI.class, args);
 	}
 }
+

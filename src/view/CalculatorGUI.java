@@ -15,9 +15,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.event.ActionEvent;
 import java.util.List;
-
 import controler.CalculatorControler;
 
+	/**
+	 * Gere l'interface graphique HM 
+	 * @param calccontr Permet de faire le lien avec l'interface graphique via un controleur
+	 * @param displayLabel1 Affiche le contenu de l'accumulateur
+	 * @param displayLabel2 Affiche le premier element de la pile
+	 * @param displayLabel3 Affiche le deuxieme element de la pile
+	 * @param displayLabel4 Affiche le troisieme element de la pile
+	 * @param displayLabel5 Affiche le quatrieme element de la pile
+	 * 
+	 */
 public class CalculatorGUI extends Application implements CalculatorGUIInterface{
 	
 	private CalculatorControler calccontr;
@@ -30,41 +39,41 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
 
 	public void affiche() {
 		
-		displayLabel1 = new Label("0");
-        displayLabel1.setPrefHeight(50);
-        displayLabel1.setMaxWidth(Double.MAX_VALUE);
-        displayLabel1.setAlignment(Pos.TOP_RIGHT);
-        displayLabel1.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
+		displayLabel1 = new Label("0"); //Va contenir le contenu de l'accumulateur
+        displayLabel1.setPrefHeight(50); //definie la hauteur
+        displayLabel1.setMaxWidth(Double.MAX_VALUE); //evite que le displayer depasse la taille de la fenetre
+        displayLabel1.setAlignment(Pos.TOP_RIGHT); //le positionne dans la partie haute et droite de la fenetre
+        displayLabel1.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;"); //police : 24px; couleur arriere plan : bleu clair; espace interne entre l'element affiche et le bord : 10 px; couleur de bordure : noir;
         
-        displayLabel2 = new Label("0");
+        displayLabel2 = new Label("0"); //Va contenir la premiere valeur de la pile
         displayLabel2.setPrefHeight(50);
         displayLabel2.setMaxWidth(Double.MAX_VALUE);
         displayLabel2.setAlignment(Pos.TOP_RIGHT);
         displayLabel2.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
         
-        displayLabel3 = new Label("0");
+        displayLabel3 = new Label("0"); //Va contenir la deuxieme valeur de la pile
         displayLabel3.setPrefHeight(50);
         displayLabel3.setMaxWidth(Double.MAX_VALUE);
         displayLabel3.setAlignment(Pos.TOP_RIGHT);
         displayLabel3.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
         
-        displayLabel4 = new Label("0");
+        displayLabel4 = new Label("0"); //Va contenir la troisieme valeur de la pile
         displayLabel4.setPrefHeight(50);
         displayLabel4.setMaxWidth(Double.MAX_VALUE);
         displayLabel4.setAlignment(Pos.TOP_RIGHT);
         displayLabel4.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
         
-        displayLabel5 = new Label("0");
+        displayLabel5 = new Label("0"); //Va contenir la quatrieme valeur de la pile
         displayLabel5.setPrefHeight(50);
         displayLabel5.setMaxWidth(Double.MAX_VALUE);
         displayLabel5.setAlignment(Pos.TOP_RIGHT);
         displayLabel5.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
 		
-		
 		////
 		
-		calccontr = new CalculatorControler(this);
 		
+		
+		//Creer les boutons, avec leur taille et la taille de la police
 		Button b0 = new Button("0");
         b0.setPrefWidth(50); 
         b0.setPrefHeight(50);  
@@ -161,10 +170,10 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         bclearall.setStyle("-fx-background-color: red;-fx-font-size: 16px");
         
         // Créer un GridPane
-        GridPane gridpane = new GridPane();
+        GridPane gridpane = new GridPane(); //Va permettre de ranger les elements dans des espaces d'un grid (ici en bas a gauche)
         gridpane.setAlignment(Pos.BOTTOM_LEFT);
         gridpane.setStyle("-fx-background-color: lightblue;");
-        gridpane.setVgap(2);
+        gridpane.setVgap(2); //met un espace vertical entre les objets
         gridpane.setHgap(2);
 
         // Ajouter des contraintes de colonnes pour créer de l'espace
@@ -177,8 +186,8 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
 
         // Positionner les boutons
         GridPane.setConstraints(b0, 2, 3); //Colonne 2 ligne 3
-        GridPane.setConstraints(b1, 1, 0);
-        GridPane.setConstraints(b2, 2, 0);
+        GridPane.setConstraints(b1, 1, 0); //Colonne 1 ligne 0
+        GridPane.setConstraints(b2, 2, 0); //etc
         GridPane.setConstraints(b3, 3, 0);
         GridPane.setConstraints(b4, 1, 1);
         GridPane.setConstraints(b5, 2, 1);
@@ -187,7 +196,7 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         GridPane.setConstraints(b8, 2, 2);
         GridPane.setConstraints(b9, 3, 2);
         GridPane.setConstraints(bvirg, 1, 3);
-        GridPane.setConstraints(bplus, 5, 3); // Colonne 5, rangée 3
+        GridPane.setConstraints(bplus, 5, 3); 
         GridPane.setConstraints(bmoins, 5, 2);
         GridPane.setConstraints(bfois, 5, 1);
         GridPane.setConstraints(bdiviser, 5, 0);
@@ -199,38 +208,26 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         // Ajouter tous les éléments à la grille
         gridpane.getChildren().addAll(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, bvirg, bops, bplus, bmoins, bfois, bdiviser, benter, bclear, bclearall);
         
-     // Ajouter des événements pour les boutons de chiffres
-//        b0.setOnAction(e -> updateDisplay("0"));
-//        b1.setOnAction(e -> updateDisplay("1"));
-//        b2.setOnAction(e -> updateDisplay("2"));
-//        b3.setOnAction(e -> updateDisplay("3"));
-//        b4.setOnAction(e -> updateDisplay("4"));
-//        b5.setOnAction(e -> updateDisplay("5"));
-//        b6.setOnAction(e -> updateDisplay("6"));
-//        b7.setOnAction(e -> updateDisplay("7"));
-//        b8.setOnAction(e -> updateDisplay("8"));
-//        b9.setOnAction(e -> updateDisplay("9"));
-//        bops.setOnAction(e -> updateDisplay("-"));
-        
-        //Concatener les deux
+        //Concatener les boites d'affichages et les boutons
         VBox root = new VBox(displayLabel5, displayLabel4, displayLabel3, displayLabel2, displayLabel1, gridpane);
         
         // Créer la scène et afficher
         Scene scene = new Scene(root, 320, 540); // x horizontal y vertical
         Stage stage = new Stage();
-        stage.setResizable(false); // permet de faire en sorte de ne plus agrandir la taille de la fenetre (evite d'avoir une interface degueu)
+        stage.setResizable(false); // permet de faire en sorte de ne plus agrandir la taille de la fenetre (esthetisme)
         stage.setScene(scene);
         stage.setTitle("Calculatrice");
         stage.show();
         
-       // La partie que le chef est en train de cook
+       // Gestion de la pression des boutons
+        calccontr = new CalculatorControler(this); //permet d'utiliser les methodes de CalculatorControler
         
-        b0.addEventHandler(ActionEvent.ACTION,
+        b0.addEventHandler(ActionEvent.ACTION, //lorsque le bouton 0 est presse, on appelle le controler qui va demander au modele comment reagir
         		e -> {
         		calccontr.boutonChiffreAppuye(b0.getText());
         });
         
-        b1.addEventHandler(ActionEvent.ACTION,
+        b1.addEventHandler(ActionEvent.ACTION, // de meme pour tous les chiffres et operations
         		e -> {
         		System.out.println(calccontr);
         		calccontr.boutonChiffreAppuye(b1.getText());
@@ -306,12 +303,12 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         			calccontr.boutonEntréePresse();
         		});
         
-        bclear.addEventHandler(ActionEvent.ACTION, //Anant 
+        bclear.addEventHandler(ActionEvent.ACTION,  
         		e -> {
         			calccontr.boutonClearPresse();
         		});
         
-        bclearall.addEventHandler(ActionEvent.ACTION, //Anant 
+        bclearall.addEventHandler(ActionEvent.ACTION, 
         		e -> {
         			calccontr.boutonClearAllPresse();
         		});
@@ -321,43 +318,46 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         			calccontr.boutonOpsPresse();
         		});
     }
-
+	/**
+	 * Permet d'afficher le contenu de l'accumulateur dans la console et sur l'interface graphique
+	 */
 	public void change(String accu) {
 		System.out.println(accu);
         displayLabel1.setText(accu);
         }
 		
-	//bizarre que tai acces à la pile alors quelle est en prive en plus tas le stackdata qui sert a rien du coup
-
-	// si je spam click le plus par ex, du coup les resultats du haut ne se mette pas a jour
-	public void change(List<Double> stackData) {
-		System.out.println(stackData); //au debut la pile est vide, ou non remplie entierement
+	
+	/**
+	 * Permet d'afficher les quatres premiers elements de la pile sur la fenetre graphique (ou les premiers s'il y a moins de 4 elements dans la pile)
+	 */
+	public void change(List<Double> stackData) { //stackData contient la liste des 4 premiers elements de la pile
+		System.out.println(stackData);
         int size = stackData.size(); //Me permet de connaitre son nombre d'elements	
-        if (size ==0) {
+        if (size ==0) { //il n'y a rien dans la pile
         	displayLabel2.setText("0");
     		displayLabel3.setText("0");
     		displayLabel4.setText("0");
     		displayLabel5.setText("0");
         }
-        if (size==1) {
+        if (size==1) { //il y a un element dans la pile, il faut donc afficher cet element dans la premiere boite au dessus de celle de l'accumulateur (la deuxieme en partant du bas) et mettre 0 pour les autres
     		displayLabel2.setText(Double.toString(stackData.get(0)));
     		displayLabel3.setText("0");
     		displayLabel4.setText("0");
     		displayLabel5.setText("0");
     	}
-    	if (size==2) {
+    	if (size==2) { //Deux elements dans la pile, il faut afficher ces deux elements dans la deuxieme et troisieme boite en partant du bas
     		displayLabel2.setText(Double.toString(stackData.get(1)));
     		displayLabel3.setText(Double.toString(stackData.get(0)));
     		displayLabel4.setText("0");
     		displayLabel5.setText("0");
     	}
-    	if (size==3) {
+    	if (size==3) { //même logique
     		displayLabel2.setText(Double.toString(stackData.get(2)));
     		displayLabel3.setText(Double.toString(stackData.get(1)));
     		displayLabel4.setText(Double.toString(stackData.get(0)));
     		displayLabel5.setText("0");
    		}
-        if (size==4) {
+        if (size==4) { //on affiche les 4 premiers elements de la pile par ordre croissant de nouveaute en partant du bas
         	displayLabel2.setText(Double.toString(stackData.get(3)));
     		displayLabel3.setText(Double.toString(stackData.get(2)));
     		displayLabel4.setText(Double.toString(stackData.get(1)));
@@ -365,9 +365,9 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         	}
         }
 
-
-
-    
+    /**
+     * Permet d'utiliser javaFX
+     */
     public void start(Stage primaryStage) {
     	affiche();
     }
