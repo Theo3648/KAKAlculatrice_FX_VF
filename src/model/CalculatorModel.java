@@ -33,6 +33,19 @@ public class CalculatorModel implements CalculatorModelInterface{
 		pile = pile1;
 	}
 	
+	public List<Double> creationListe4Derniers() {
+		int size = pile.size();
+		List<Double> liste = new ArrayList<>();
+        if (size < 4) {
+            liste.addAll(pile);
+        } else {
+            for (int i = size - 4; i < size; i++) {
+                liste.add(pile.get(i));
+            }
+        }
+        return liste;
+	}
+	
 	public void setCalccontr(CalculatorControler calccontr1) {
 		calccontr = calccontr1;
 	}
@@ -40,15 +53,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	public void add() {
 		if (pile.size() >= 2) {
 			pile.add(pile.pop() + pile.pop());
-			int size = pile.size();
-			List<Double> liste = new ArrayList<>();
-	        if (size < 4) {
-	            liste.addAll(pile);
-	        } else {
-	            for (int i = size - 4; i < size; i++) {
-	                liste.add(pile.get(i));
-	            }
-	        }
+			List<Double> liste = this.creationListe4Derniers();
 			calccontr.change(liste);
 		}
 	}
@@ -56,15 +61,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	public void substract() {
 		if (pile.size() >= 2) {
 			pile.add(pile.pop() - pile.pop());
-			int size = pile.size();
-			List<Double> liste = new ArrayList<>();
-	        if (size < 4) {
-	            liste.addAll(pile);
-	        } else {
-	            for (int i = size - 4; i < size; i++) {
-	                liste.add(pile.get(i));
-	            }
-	        }
+			List<Double> liste = this.creationListe4Derniers();
 			calccontr.change(liste);
 		}
 	}
@@ -72,15 +69,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 	public void multiply() {
 		if (pile.size() >= 2) {
 			pile.add(pile.pop() * pile.pop());
-			int size = pile.size();
-			List<Double> liste = new ArrayList<>();
-	        if (size < 4) {
-	            liste.addAll(pile);
-	        } else {
-	            for (int i = size - 4; i < size; i++) {
-	                liste.add(pile.get(i));
-	            }
-	        }
+			List<Double> liste = this.creationListe4Derniers();
 			calccontr.change(liste);
 		}
 	}
@@ -96,15 +85,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 				pile.add(p2);
 				pile.add(p1);
 			}
-			int size = pile.size();
-			List<Double> liste = new ArrayList<>();
-			if (size < 4) {
-				liste.addAll(pile);
-			} else {
-				for (int i = size - 4; i < size; i++) {
-					liste.add(pile.get(i));
-				}
-			}
+			List<Double> liste = this.creationListe4Derniers();
 			calccontr.change(liste);
 		}
 	}
@@ -128,15 +109,7 @@ public class CalculatorModel implements CalculatorModelInterface{
 			pile.add(Double.parseDouble(accu));
 			this.clear();
 			calccontr.change(accu);
-			int size = pile.size();
-			List<Double> liste = new ArrayList<>();
-			if (size < 4) {
-				liste.addAll(pile);
-			} else {
-				for (int i = size - 4; i < size; i++) {
-					liste.add(pile.get(i));
-				}
-			}
+			List<Double> liste = this.creationListe4Derniers();
 			calccontr.change(liste);
 		}
 	}
