@@ -157,27 +157,38 @@ public class CalculatorModel implements CalculatorModelInterface{
 	 * Methode pop qui permet d'obtenir le premier element d'une pile 
 	 */
 	public double pop() {
-		double p = pile.pop();
-		pile.add(p);
-		return p;
+		if (!pile.isEmpty()) { //Si l'accumulateur est vide, on aura rien a enlever dans la pile
+			double p = pile.pop();
+			pile.add(p);
+			return p;
+		}
+		else {
+			return 0; //La condition est déjà prise en compte dans les methodes
+		}
 	}
 	/**
 	 * Methode qui permet de supprimer le premier element d'une pile
 	 */
 	public void drop() {
-		pile.pop();
+		if (!pile.isEmpty()) { //Si l'accumulateur est vide, on aura rien a enlever dans la pile
+			pile.pop();
+		}
 	}
 	/**
 	 * Methode qui permet d'echanger les positions des deux premiers elements d'une pile
 	 */
 	public void swap() {
+		if (pile.size() >= 2) {
 		double p1 = pile.pop();
 		double p2 = pile.pop();
 		pile.add(p1);
 		pile.add(p2);
+		List<Double> liste = this.creationListe4Derniers();
+		calccontr.change(liste);
+		}
 	}
 	/**
-	 * Methode qui permet de vider l'accumulateur
+	 * Methode qui permet de vider le contenu de l'accumulateur
 	 */
 	public void clear() {
 		accu = "";

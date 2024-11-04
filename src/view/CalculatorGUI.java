@@ -35,15 +35,14 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
 	private Label displayLabel3;
 	private Label displayLabel4;
 	private Label displayLabel5;
-//	private Array
-
+	
 	public void affiche() {
 		
 		displayLabel1 = new Label("0"); //Va contenir le contenu de l'accumulateur
         displayLabel1.setPrefHeight(50); //definie la hauteur
         displayLabel1.setMaxWidth(Double.MAX_VALUE); //evite que le displayer depasse la taille de la fenetre
         displayLabel1.setAlignment(Pos.TOP_RIGHT); //le positionne dans la partie haute et droite de la fenetre
-        displayLabel1.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;"); //police : 24px; couleur arriere plan : bleu clair; espace interne entre l'element affiche et le bord : 10 px; couleur de bordure : noir;
+        displayLabel1.setStyle("-fx-font-size: 24px; -fx-background-color: lightpink; -fx-padding: 10px; -fx-border-color: black;"); //police : 24px; couleur arriere plan : bleu clair; espace interne entre l'element affiche et le bord : 10 px; couleur de bordure : noir;
         
         displayLabel2 = new Label("0"); //Va contenir la premiere valeur de la pile
         displayLabel2.setPrefHeight(50);
@@ -77,52 +76,52 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
 		Button b0 = new Button("0");
         b0.setPrefWidth(50); 
         b0.setPrefHeight(50);  
-        b0.setStyle("-fx-font-size: 16px");
+        b0.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
     	
     	Button b1 = new Button("1");
         b1.setPrefWidth(50); 
         b1.setPrefHeight(50);  
-        b1.setStyle("-fx-font-size: 16px");
+        b1.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
 
         Button b2 = new Button("2");
         b2.setPrefWidth(50); 
         b2.setPrefHeight(50);  
-        b2.setStyle("-fx-font-size: 16px");
+        b2.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
 
         Button b3 = new Button("3");
         b3.setPrefWidth(50); 
         b3.setPrefHeight(50);  
-        b3.setStyle("-fx-font-size: 16px");
+        b3.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
 
         Button b4 = new Button("4");
         b4.setPrefWidth(50); 
         b4.setPrefHeight(50);  
-        b4.setStyle("-fx-font-size: 16px");
+        b4.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
 
         Button b5 = new Button("5");
         b5.setPrefWidth(50); 
         b5.setPrefHeight(50);  
-        b5.setStyle("-fx-font-size: 16px");
+        b5.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
 
         Button b6 = new Button("6");
         b6.setPrefWidth(50); 
         b6.setPrefHeight(50);  
-        b6.setStyle("-fx-font-size: 16px");
+        b6.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
         
         Button b7 = new Button("7");
         b7.setPrefWidth(50); 
         b7.setPrefHeight(50);  
-        b7.setStyle("-fx-font-size: 16px");
+        b7.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
 
         Button b8 = new Button("8");
         b8.setPrefWidth(50); 
         b8.setPrefHeight(50);  
-        b8.setStyle("-fx-font-size: 16px");
+        b8.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
 
         Button b9 = new Button("9");
         b9.setPrefWidth(50); 
         b9.setPrefHeight(50);  
-        b9.setStyle("-fx-font-size: 16px");
+        b9.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
         
         Button bvirg = new Button(",");
         bvirg.setPrefWidth(50); 
@@ -169,6 +168,11 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         bclearall.setPrefHeight(50);  
         bclearall.setStyle("-fx-background-color: red;-fx-font-size: 16px");
         
+        Button bswap = new Button("<->");
+        bswap.setPrefWidth(50); 
+        bswap.setPrefHeight(50);  
+        bswap.setStyle("-fx-font-size: 16px");
+        
         // Créer un GridPane
         GridPane gridpane = new GridPane(); //Va permettre de ranger les elements dans des espaces d'un grid (ici en bas a gauche)
         gridpane.setAlignment(Pos.BOTTOM_LEFT);
@@ -204,9 +208,10 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         GridPane.setConstraints(bops, 3, 3);
         GridPane.setConstraints(bclear, 1, 4);
         GridPane.setConstraints(bclearall, 3, 4);
+        GridPane.setConstraints(bswap, 2, 4);
 
         // Ajouter tous les éléments à la grille
-        gridpane.getChildren().addAll(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, bvirg, bops, bplus, bmoins, bfois, bdiviser, benter, bclear, bclearall);
+        gridpane.getChildren().addAll(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, bvirg, bops, bplus, bmoins, bfois, bdiviser, benter, bclear, bclearall, bswap);
         
         //Concatener les boites d'affichages et les boutons
         VBox root = new VBox(displayLabel5, displayLabel4, displayLabel3, displayLabel2, displayLabel1, gridpane);
@@ -317,12 +322,16 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         		e -> {
         			calccontr.boutonOpsPresse();
         		});
+        
+        bswap.addEventHandler(ActionEvent.ACTION,
+        		e -> {
+        			calccontr.boutonSwapPresse();
+        		});
     }
 	/**
-	 * Permet d'afficher le contenu de l'accumulateur dans la console et sur l'interface graphique
+	 * Permet d'afficher le contenu de l'accumulateur sur l'interface graphique
 	 */
 	public void change(String accu) {
-		System.out.println(accu);
         displayLabel1.setText(accu);
         }
 		
@@ -331,7 +340,6 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
 	 * Permet d'afficher les quatres premiers elements de la pile sur la fenetre graphique (ou les premiers s'il y a moins de 4 elements dans la pile)
 	 */
 	public void change(List<Double> stackData) { //stackData contient la liste des 4 premiers elements de la pile
-		System.out.println(stackData);
         int size = stackData.size(); //Me permet de connaitre son nombre d'elements	
         if (size ==0) { //il n'y a rien dans la pile
         	displayLabel2.setText("0");

@@ -96,6 +96,10 @@ public class CalculatorControler implements CalculatorControlerInterface{
 		calcmod.opposite();
 		
 	}
+	
+	public void boutonSwapPresse() {
+		calcmod.swap();
+	}
 
 
 
