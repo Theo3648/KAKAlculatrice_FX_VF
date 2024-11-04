@@ -4,8 +4,14 @@ package model;
  */
 public interface CalculatorModelInterface {
 
+	/**
+	 * Methode qui somme les deux premiers elements de la pile
+	 */
 	public void add();
 	
+	/**
+	 * Methode qui permet de soustraire les deux premiers elements de la pile
+	 */
 	public void substract();
 	
 	public void multiply();

@@ -1,25 +1,20 @@
 package view;
 
-import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.event.ActionEvent;
 import java.util.List;
 import controler.CalculatorControler;
 
 	/**
 	 * Gere l'interface graphique HM 
-	 * @param calccontr Permet de faire le lien avec l'interface graphique via un controleur
+	 * @param calccontr Permet de faire le lien entre l'interface graphique et le modele via un controleur
 	 * @param displayLabel1 Affiche le contenu de l'accumulateur
 	 * @param displayLabel2 Affiche le premier element de la pile
 	 * @param displayLabel3 Affiche le deuxieme element de la pile
@@ -27,7 +22,7 @@ import controler.CalculatorControler;
 	 * @param displayLabel5 Affiche le quatrieme element de la pile
 	 * 
 	 */
-public class CalculatorGUI extends Application implements CalculatorGUIInterface{
+public class CalculatorGUI implements CalculatorGUIInterface{
 	
 	private CalculatorControler calccontr;
 	private Label displayLabel1;
@@ -36,9 +31,12 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
 	private Label displayLabel4;
 	private Label displayLabel5;
 	
+	/**
+	 * Va permettre de construire l'interface graphique de la calculatrice
+	 */
 	public void affiche() {
 		
-		displayLabel1 = new Label("0"); //Va contenir le contenu de l'accumulateur
+		displayLabel1 = new Label("0"); //va contenir le contenu de l'accumulateur
         displayLabel1.setPrefHeight(50); //definie la hauteur
         displayLabel1.setMaxWidth(Double.MAX_VALUE); //evite que le displayer depasse la taille de la fenetre
         displayLabel1.setAlignment(Pos.TOP_RIGHT); //le positionne dans la partie haute et droite de la fenetre
@@ -68,11 +66,7 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         displayLabel5.setAlignment(Pos.TOP_RIGHT);
         displayLabel5.setStyle("-fx-font-size: 24px; -fx-background-color: lightblue; -fx-padding: 10px; -fx-border-color: black;");
 		
-		////
-		
-		
-		
-		//Creer les boutons, avec leur taille et la taille de la police
+		//Creer les boutons, avec leur taille, la taille de la police et la forme du bouton
 		Button b0 = new Button("0");
         b0.setPrefWidth(50); 
         b0.setPrefHeight(50);  
@@ -178,7 +172,7 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         gridpane.setAlignment(Pos.BOTTOM_LEFT);
         gridpane.setStyle("-fx-background-color: lightblue;");
         gridpane.setVgap(2); //met un espace vertical entre les objets
-        gridpane.setHgap(2);
+        gridpane.setHgap(2); //met un espace horizontal entre les objets
 
         // Ajouter des contraintes de colonnes pour créer de l'espace
         gridpane.getColumnConstraints().add(new ColumnConstraints(20)); // Colonne 0
@@ -210,14 +204,14 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         GridPane.setConstraints(bclearall, 3, 4);
         GridPane.setConstraints(bswap, 2, 4);
 
-        // Ajouter tous les éléments à la grille
+        // Ajouter tous les éléments au grid
         gridpane.getChildren().addAll(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, bvirg, bops, bplus, bmoins, bfois, bdiviser, benter, bclear, bclearall, bswap);
         
         //Concatener les boites d'affichages et les boutons
         VBox root = new VBox(displayLabel5, displayLabel4, displayLabel3, displayLabel2, displayLabel1, gridpane);
         
         // Créer la scène et afficher
-        Scene scene = new Scene(root, 320, 540); // x horizontal y vertical
+        Scene scene = new Scene(root, 320, 540); // taille de la fenetre: horizontal x vertical
         Stage stage = new Stage();
         stage.setResizable(false); // permet de faire en sorte de ne plus agrandir la taille de la fenetre (esthetisme)
         stage.setScene(scene);
@@ -225,7 +219,7 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         stage.show();
         
        // Gestion de la pression des boutons
-        calccontr = new CalculatorControler(this); //permet d'utiliser les methodes de CalculatorControler
+        calccontr = new CalculatorControler(this); //On construit un controler, cela permet d'utiliser les methodes de CalculatorControler
         
         b0.addEventHandler(ActionEvent.ACTION, //lorsque le bouton 0 est presse, on appelle le controler qui va demander au modele comment reagir
         		e -> {
@@ -328,6 +322,7 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         			calccontr.boutonSwapPresse();
         		});
     }
+	
 	/**
 	 * Permet d'afficher le contenu de l'accumulateur sur l'interface graphique
 	 */
@@ -335,9 +330,9 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
         displayLabel1.setText(accu);
         }
 		
-	
 	/**
-	 * Permet d'afficher les quatres premiers elements de la pile sur la fenetre graphique (ou les premiers s'il y a moins de 4 elements dans la pile)
+	 * Permet d'afficher les quatres premiers elements de la pile sur la fenetre graphique 
+	 * (ou les premiers s'il y a moins de 4 elements dans la pile)
 	 */
 	public void change(List<Double> stackData) { //stackData contient la liste des 4 premiers elements de la pile
         int size = stackData.size(); //Me permet de connaitre son nombre d'elements	
@@ -371,13 +366,7 @@ public class CalculatorGUI extends Application implements CalculatorGUIInterface
     		displayLabel4.setText(Double.toString(stackData.get(1)));
     		displayLabel5.setText(Double.toString(stackData.get(0)));
         	}
-        }
-
-    /**
-     * Permet d'utiliser javaFX
-     */
-    public void start(Stage primaryStage) {
-    	affiche();
-    }
+	}
 }
+
 

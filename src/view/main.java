@@ -1,12 +1,17 @@
 package view;
 
-import view.CalculatorGUI;
 import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class main {
+public class main extends Application {
 
+	public void start(Stage primaryStage) {
+		CalculatorGUI calcgui = new CalculatorGUI(); //Constructeur par default
+		calcgui.affiche(); //On lance la méthode qui permet d'afficher
+	}
+	
 	public static void main(String[] args) {
-		Application.launch(CalculatorGUI.class, args); //On lance l'affichage de la calculatrice
+		launch(args); 
 	}
 }
 
