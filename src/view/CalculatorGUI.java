@@ -120,7 +120,7 @@ public class CalculatorGUI implements CalculatorGUIInterface{
         Button bvirg = new Button(",");
         bvirg.setPrefWidth(50); 
         bvirg.setPrefHeight(50);  
-        bvirg.setStyle("-fx-font-size: 16px");
+        bvirg.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
         
         Button bplus = new Button("+");
         bplus.setPrefWidth(80); 
@@ -150,7 +150,7 @@ public class CalculatorGUI implements CalculatorGUIInterface{
         Button bops = new Button("+/-");
         bops.setPrefWidth(80); 
         bops.setPrefHeight(50);  
-        bops.setStyle("-fx-font-size: 16px");
+        bops.setStyle("-fx-font-size: 16px; -fx-background-radius : 100");
         
         Button bclear = new Button("C");
         bclear.setPrefWidth(50); 
